@@ -2,34 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux'
 
+import counterReducer, { inc, dec} from './store/counter'
+
 import './index.css';
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
-//Action types
-
-const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
-const DECREMENT_COUNTER = 'DECREMENT_COUNTER'
-
-//ACTIONS
-const inc = () => ({
-    type: INCREMENT_COUNTER
-})
-const dec = () => ({
-    type: DECREMENT_COUNTER
-})
-
-//Reducer
-const counterReducer = (state = 0, action) => {
-    switch (action.type) {
-        case 'INCREMENT_COUNTER':
-            return state + 1
-        case 'DECREMENT_COUNTER':
-            return state - 1
-        default:
-            return state
-    }
-}
 
 const store = createStore(
     counterReducer,
