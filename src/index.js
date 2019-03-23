@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux'
+import {createStore, combineReducers} from 'redux'
 
 import counterReducer, { inc, dec} from './store/counter'
 
@@ -10,7 +10,10 @@ import App from './App';
 
 
 const store = createStore(
-    counterReducer,
+    combineReducers({
+        counter: counterReducer
+    }),
+
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__()
 )
