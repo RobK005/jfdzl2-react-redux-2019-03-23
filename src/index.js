@@ -17,7 +17,12 @@ const counterReducer = (state = 0, action) => {
     }
 }
 
-let store = createStore(counterReducer)
+const store = createStore(
+    counterReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
 console.log('initial state', store.getState())
 store.dispatch({
     type: 'INCREMENT_COUNTER'
