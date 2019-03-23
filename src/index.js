@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {createStore, combineReducers} from 'redux'
 
 import counterReducer, {inc, dec} from './store/counter'
-import todosReducer, {add} from './store/todo'
+import todosReducer, {addTodo, toggleTodo} from './store/todo'
 
 import './index.css';
 import App from './App';
@@ -23,12 +23,12 @@ const store = createStore(
 
 window.inc = () => store.dispatch(inc())
 window.dec = () => store.dispatch(dec())
-window.add = (text) => store.dispatch(add(text))
+window.addTodo = (text) => store.dispatch(addTodo(text))
+window.toggleTodo = (id) => store.dispatch(toggleTodo(id))
 
-store.dispatch({
-    type: 'ADD_TODO',
-    text: 'Shopping'
-})
+
+store.dispatch(addTodo('Shopping'))
+store.dispatch(addTodo('Washing'))
 
 window.inc()
 
