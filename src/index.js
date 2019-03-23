@@ -6,6 +6,20 @@ import './index.css';
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
+//Action types
+
+const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
+const DECREMENT_COUNTER = 'DECREMENT_COUNTER'
+
+//ACTIONS
+const inc = () => ({
+    type: INCREMENT_COUNTER
+})
+const dec = () => ({
+    type: DECREMENT_COUNTER
+})
+
+//Reducer
 const counterReducer = (state = 0, action) => {
     switch (action.type) {
         case 'INCREMENT_COUNTER':
@@ -23,17 +37,14 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-console.log('initial state', store.getState())
-store.dispatch({
-    type: 'INCREMENT_COUNTER'
-})
-store.dispatch({
-    type: 'DECREMENT_COUNTER'
-})
-store.dispatch({
-    type: 'DECREMENT_COUNTER'
-})
-console.log('state after dispatch',store.getState())
+
+window.inc = () => store.dispatch(inc())
+window.dec = () => store.dispatch(dec())
+
+window.inc()
+
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
