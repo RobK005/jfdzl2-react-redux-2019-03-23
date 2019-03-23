@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, combineReducers} from 'redux'
 
-import counterReducer, { inc, dec} from './store/counter'
+import counterReducer, {inc, dec} from './store/counter'
+import todosReducer, {add} from './store/todo'
 
 import './index.css';
 import App from './App';
@@ -11,7 +12,8 @@ import App from './App';
 
 const store = createStore(
     combineReducers({
-        counter: counterReducer
+        counter: counterReducer,
+        todos: todosReducer
     }),
 
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
@@ -21,10 +23,14 @@ const store = createStore(
 
 window.inc = () => store.dispatch(inc())
 window.dec = () => store.dispatch(dec())
+window.add = (text) => store.dispatch(add(text))
+
+store.dispatch({
+    type: 'ADD_TODO',
+    text: 'Shopping'
+})
 
 window.inc()
-
-
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
