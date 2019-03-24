@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-
 import Counter from './Counter.js'
+import TodoList from './TodoList'
+import './App.css';
 
 class App extends Component {
   render() {
@@ -9,6 +9,7 @@ class App extends Component {
       <div className="App">
         Redux
         <Counter></Counter>
+        <TodoList></TodoList>
       </div>
     );
   }
