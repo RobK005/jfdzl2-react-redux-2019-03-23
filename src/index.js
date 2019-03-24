@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, combineReducers} from 'redux'
 
+import {Provider} from 'react-redux'
 import counterReducer, {inc, dec} from './store/counter'
 import todosReducer, {addTodo, toggleTodo, deleteTodo} from './store/todo'
 
@@ -20,7 +21,6 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-
 window.inc = () => store.dispatch(inc())
 window.dec = () => store.dispatch(dec())
 window.addTodo = (text) => store.dispatch(addTodo(text))
@@ -34,8 +34,10 @@ store.dispatch(deleteTodo(2))
 
 window.inc()
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}><App /></Provider>,
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
